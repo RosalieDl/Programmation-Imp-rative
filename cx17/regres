@@ -1,0 +1,8 @@
+#! /bin/bash
+
+# cx17 : test de régression
+# usage : regres 7 --> teste cx17.7
+
+make
+cx17.$1 data/minilorem > cx17.$1.test
+diff référence.test cx17.$1.test
