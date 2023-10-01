@@ -58,7 +58,7 @@ int execute()
 		else if (exe_commande(OP, memoire[PC]))	// sinon exécution (code opération + opérande)
 			return -1 ;							// instruction non reconnue -> erreur
 		if (PC == 0) break ;					// on a atteint la fin du programme
-		else if (PC < 32) return -1 ; }  		// tentative accès ROM -> erreur
+		else if (PC < debut_ram) return -1 ; }  		// tentative accès ROM -> erreur
 	return 0 ; }
 
 

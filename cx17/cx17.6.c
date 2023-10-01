@@ -118,7 +118,8 @@ bool pareil(str x, str y) { return strcasecmp(x, y) ? False : True ; }	// cf typ
 // ajoute un mot nouveau dans les tables mots et refs, à l'indice donné ; màj indice de prochain emplacement libre
 void ajoute_mot(idx x, str mot, idx ref)
 {	mots[x].mot = mot ;					// stocke le mot à l'emplacement x
-	int* ligne = malloc(sizeof(int)) ;
+	int * ligne = malloc(sizeof(int)) ;
+	if (! ligne) usage("cons : manque de RAM") ; 
 	*ligne = ref ;
 	mots[x].refs = cons(ligne, nil) ;	// ajoute la première référence pour ce mot (ligne actuelle)
 	++mot_libre ; }
@@ -127,7 +128,8 @@ void ajoute_mot(idx x, str mot, idx ref)
 // ajoute une référence pour un mot déjà indexé (+ màj du compteur ref_libre)
 void ajoute_ref(idx x, idx ref)
 {	if (*(int *)(mots[x].refs -> car) != ref) {			// on vérifie que la ligne ne soit pas déjà indexée
-		int* ligne = malloc(sizeof(int)) ;
+		int * ligne = malloc(sizeof(int)) ;
+		if (! ligne) usage("cons : manque de RAM") ; 
 		*ligne = ref ;
 		mots[x].refs = cons(ligne, mots[x].refs) ;	}} 	// ajout de la référence
 
@@ -143,7 +145,7 @@ int compare(void const * E1, void const * E2)
 void putlist(list L)
 {	if (! L) return ; 
 	putlist(L -> cdr) ;
-	printf("%i ", *(int *)(L -> car)) ; }
+	printf("%i ", *(int *) L -> car) ; }
 
 
 // affichage final

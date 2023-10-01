@@ -67,7 +67,7 @@ int execute()
 		return -1 ;				// instruction non reconnue -> erreur
 	printf("PC : 0x%02X \t A : 0x%02X (%i)\n\n", PC, A, (char)A);	// info registres, instruction	
 	if (PC == 0) return 1 ;				// on a atteint la fin du programme
-	else if (PC < 32) return -1 ;  		// tentative accès ROM -> erreur
+	else if (PC < debut_ram) return -1 ;  		// tentative accès ROM -> erreur
 	return 0 ; }
 
 // gestion des opérations de saut

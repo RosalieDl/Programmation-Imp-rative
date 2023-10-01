@@ -36,6 +36,6 @@ void putlist(list L)
 
 // Cherche un mot dans une liste
 int dans_list(char * mot, list L)
-{	if (!L) return 0 ;		// on a pas trouvé le mot
+{	if (! L) return 0 ;		// on a pas trouvé le mot
 	return (pareil((char *)L -> car, mot) || dans_list(mot, L -> cdr)) ; }
 
